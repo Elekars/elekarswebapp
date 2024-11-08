@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On RewriteBase / # Route API requests correctly to
+  `src/pages/api` RewriteCond %{REQUEST_URI} ^/api/([a-zA-Z0-9_-]+)$ [NC]
+  RewriteRule ^api/(.*)$ /src/pages/api/$1 [L,QSA] # Route all other requests to
+  `src/index.html` RewriteCond %{REQUEST_FILENAME} !-f RewriteCond
+  %{REQUEST_FILENAME} !-d RewriteRule ^(.*)$ /src/index.html [L]
+</IfModule>
